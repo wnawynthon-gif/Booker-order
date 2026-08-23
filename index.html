@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Booker Order</title>
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--ink:#17202a;--muted:#68717d;--accent:#0b6bcb;--line:#dfe3e8;--danger:#b42318}
+*{box-sizing:border-box} body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;background:var(--bg);color:var(--ink)}
+.wrap{max-width:760px;margin:auto;padding:16px 14px 110px}.head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:8px 2px 16px}
+h1{font-size:28px;margin:0}.sub{color:var(--muted);font-size:13px}.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;margin-bottom:14px;box-shadow:0 2px 8px #00000008}
+.section{font-size:18px;font-weight:750;margin:2px 0 12px}.row{display:grid;grid-template-columns:1fr 110px;gap:10px;align-items:center;padding:10px 0;border-top:1px solid #edf0f2}.row:first-of-type{border-top:0}
+.name{font-size:16px}.qty{display:flex;align-items:center;border:1px solid #cbd2d9;border-radius:12px;overflow:hidden;background:#fff}
+.qty button{width:38px;height:42px;border:0;background:#eef3f7;font-size:22px}.qty input{width:100%;height:42px;border:0;text-align:center;font-size:17px;min-width:0}.qty input:focus{outline:2px solid #91c7ff;outline-offset:-2px}
+.note{width:100%;border:1px solid #cbd2d9;border-radius:12px;padding:12px;font-size:16px;margin-top:8px}
+.actions{position:fixed;left:0;right:0;bottom:0;background:#ffffffee;backdrop-filter:blur(8px);border-top:1px solid var(--line);padding:10px max(14px,env(safe-area-inset-right)) calc(10px + env(safe-area-inset-bottom)) max(14px,env(safe-area-inset-left));display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.action{border:0;border-radius:12px;padding:13px 8px;font-size:15px;font-weight:700}.primary{background:var(--accent);color:white}.secondary{background:#e9eef3;color:#18212a}.full{grid-column:1/-1}
+.summary{white-space:pre-wrap;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:14px;background:#f7f8fa;border-radius:12px;padding:12px;min-height:70px}
+@media(max-width:420px){.wrap{padding-left:10px;padding-right:10px}.row{grid-template-columns:minmax(0,1fr) 108px}h1{font-size:25px}}
+@media print{body{background:white}.actions,.qty button{display:none}.wrap{max-width:none;padding:0}.card{box-shadow:none;border:0}.qty{border:0}.qty input{font-weight:bold}.sub{display:none}}
+</style>
+</head>
+<body>
+<main class="wrap">
+ <div class="head"><div><h1>Booker Order</h1><div class="sub">Quick supplier order • mobile friendly</div></div><div id="date" class="sub"></div></div>
+
+ <section class="card">
+  <div class="section">Top Side</div>
+  <div id="top"></div>
+ </section>
+
+ <section class="card">
+  <div class="section">Other Items</div>
+  <div id="other"></div>
+ </section>
+
+ <section class="card">
+  <div class="section">Order note</div>
+  <textarea id="note" class="note" rows="3" placeholder="Add note..."></textarea>
+ </section>
+
+ <section class="card">
+  <div class="section">Order Summary</div>
+  <div id="summary" class="summary">No items selected.</div>
+ </section>
+</main>
+
+<div class="actions">
+ <button class="action secondary" id="clear">Clear</button>
+ <button class="action secondary" id="pdf">Save / Print PDF</button>
+ <button class="action primary full" id="share">Share order / LINE</button>
+</div>
+
+<script>
+const groups = {
+ top: ["Chicken breast","สไก่","ม้า cod","ลิ้นวัว","ไข่","น้ำตาล"],
+ other: ["Blue Roll","น้ำยาล้างจาน","T/A container"]
+};
+function row(name, i){
+ return `<div class="row"><div class="name">${name}</div><div class="qty">
+ <button type="button" aria-label="decrease">−</button><input inputmode="numeric" pattern="[0-9]*" type="number" min="0" step="1" value="0" data-name="${name}"><button type="button" aria-label="increase">+</button>
+ </div></div>`;
+}
+for(const [id,items] of Object.entries(groups)) document.getElementById(id).innerHTML=items.map(row).join("");
+
+function update(){
+ let lines=["BOOKER ORDER"];
+ document.querySelectorAll('.qty input').forEach(x=>{let q=Number(x.value)||0;if(q>0)lines.push(`${x.dataset.name} x ${q}`)});
+ const n=document.getElementById('note').value.trim(); if(n) lines.push(`Note: ${n}`);
+ document.getElementById('summary').textContent=lines.length===1?"No items selected.":lines.join("\n");
+ localStorage.setItem("bookerOrder",JSON.stringify({
+   q:[...document.querySelectorAll('.qty input')].map(x=>x.value),note:n
+ }));
+}
+document.addEventListener('click',e=>{
+ if(e.target.closest('.qty button')){
+   const box=e.target.closest('.qty'), input=box.querySelector('input');
+   input.value=Math.max(0,(Number(input.value)||0)+(e.target.textContent==="+"?1:-1)); update();
+ }
+});
+document.addEventListener('input',e=>{if(e.target.matches('.qty input,#note')) update()});
+try{
+ const s=JSON.parse(localStorage.getItem("bookerOrder")||"null");
+ if(s){document.querySelectorAll('.qty input').forEach((x,i)=>x.value=s.q?.[i]||0);document.getElementById('note').value=s.note||""}
+}catch(e){}
+update();
+document.getElementById('date').textContent=new Date().toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'});
+document.getElementById('clear').onclick=()=>{document.querySelectorAll('.qty input').forEach(x=>x.value=0);document.getElementById('note').value="";update()};
+document.getElementById('pdf').onclick=()=>window.print();
+document.getElementById('share').onclick=async()=>{
+ const text=document.getElementById('summary').textContent;
+ if(text==="No items selected.") return alert("Please enter at least one quantity.");
+ if(navigator.share){try{await navigator.share({title:"Booker Order",text});return}catch(e){}}
+ try{await navigator.clipboard.writeText(text);alert("Order copied. Open LINE and paste it.")}catch(e){alert(text)}
+};
+</script>
+</body>
+</html>
