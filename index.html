@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Booker Supplier Order</title>
+<title>รายการสั่งของ — Th/Ch sup</title>
 <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -330,8 +330,8 @@
 <div class="page-wrap">
 
   <div class="header">
-    <h1>🛒 Booker Supplier Order</h1>
-    <div class="subtitle">Booker (Wimbledon 353) · Weekly Order</div>
+    <h1>🛒 รายการสั่งของ</h1>
+    <div class="subtitle">Booker Weekly Order · Wimbledon 353</div>
   </div>
 
   <div class="date-row">
@@ -447,38 +447,20 @@
 
 <script>
 const items = [
-  {id:1,name:'CE Chicken Breast Fillet',hint:'Code 147179 · 2 x 5kg',cat:'meat',unit:'pack',defaultPrice:null,supplier:'Booker'},
-  {id:2,name:'CE Chicken Breast Fillet',hint:'Code 147180 · 1 x 5kg',cat:'meat',unit:'pack',defaultPrice:null,supplier:'Booker'},
-  {id:3,name:'CE Mid and Prime Chick Wings',hint:'Code 321688 · 4.5kg',cat:'meat',unit:'pack',defaultPrice:null,supplier:'Booker'},
-  {id:4,name:'Roasting Beef 32 Day Matured',hint:'Code 297834 · av 4kg',cat:'meat',unit:'pack',defaultPrice:null,supplier:'Booker'},
-  {id:5,name:'Beef Brisket',hint:'Code 275899 · AV 3kg',cat:'meat',unit:'pack',defaultPrice:null,supplier:'Booker'},
-  {id:6,name:'Flat Iron Beef Steak',hint:'Code 134043 · Av 2kg',cat:'meat',unit:'pack',defaultPrice:null,supplier:'Booker'},
-  {id:7,name:'CL Cod Flt SL/BL',hint:'Code 256183 · 1.816kg',cat:'fish',unit:'pack',defaultPrice:null,supplier:'Booker'},
-  {id:8,name:'Ckd Peeled T/On King Prawns',hint:'Code 087194 · 908g',cat:'fish',unit:'pack',defaultPrice:null,supplier:'Booker'},
-  {id:9,name:'Lobster in Brine 350g',hint:'Code 061753 · sgl',cat:'fish',unit:'pack',defaultPrice:null,supplier:'Booker'},
-  {id:10,name:'CL Large Eggs',hint:'Code 168775 · 1 x 180',cat:'produce',unit:'pack',defaultPrice:null,supplier:'Booker'},
-  {id:11,name:'ES Mixed Free Range Eggs',hint:'Code 281802 · 8 x 6pk',cat:'produce',unit:'pack',defaultPrice:null,supplier:'Booker'},
-  {id:12,name:'FF Closed Cup Mushrooms',hint:'Code 299654 · 2.5kg',cat:'produce',unit:'pack',defaultPrice:null,supplier:'Booker'},
-  {id:13,name:'FFVac Pack Spring Onions',hint:'Code 282854 · 2 x 12pk',cat:'produce',unit:'pack',defaultPrice:null,supplier:'Booker'},
-  {id:14,name:'Chefs Choice Vegetable Oil',hint:'Code 312427 · 20ltr',cat:'other',unit:'pack',defaultPrice:null,supplier:'Booker'},
-  {id:15,name:'Kuhne Pickle Gherkins',hint:'Code 308192 · 2.45kg',cat:'other',unit:'pack',defaultPrice:null,supplier:'Booker'},
-  {id:16,name:'Coca Cola Can',hint:'Code 282574 · 24 x 330ml',cat:'other',unit:'pack',defaultPrice:null,supplier:'Booker'},
-  {id:17,name:'Coke Zero',hint:'Code 063724 · 24 x 330ml',cat:'other',unit:'pack',defaultPrice:null,supplier:'Booker'},
-  {id:18,name:'H/Land Spring Water Still',hint:'Code 301648 · 12 x 1.5ltr',cat:'other',unit:'pack',defaultPrice:null,supplier:'Booker'},
-  {id:19,name:'H/Land Spring Spark PET',hint:'Code 651780 · 24 x 500ml',cat:'other',unit:'pack',defaultPrice:null,supplier:'Booker'},
-  {id:20,name:'Volvic Mineral Water PET',hint:'Code 268185 · 12 x 1.5ltr',cat:'other',unit:'pack',defaultPrice:null,supplier:'Booker'},
-  {id:21,name:'San Pellegrino Sparkling',hint:'Code 270719 · 12 x 500ml',cat:'other',unit:'pack',defaultPrice:null,supplier:'Booker'},
-  {id:22,name:'CP Std Blue 2Ply C/Feed Roll',hint:'Code 247807 · 1 x 6pk',cat:'other',unit:'pack',defaultPrice:null,supplier:'Booker'},
-  {id:23,name:'Dunisoft 40x40 8F Wht Napkin',hint:'Code 309045 · 10 x 50s',cat:'other',unit:'pack',defaultPrice:null,supplier:'Booker'},
-  {id:24,name:'CTS 2Ply 8FNapkin Wht39x40cm',hint:'Code 308024 · 1 x 100s',cat:'other',unit:'pack',defaultPrice:null,supplier:'Booker'},
-  {id:25,name:'CP APC Blue',hint:'Code 162469 · 1 x 50pk',cat:'other',unit:'pack',defaultPrice:null,supplier:'Booker'},
-  {id:26,name:'CE Washing Up Liquid',hint:'Code 300536 · 3 x 5ltr',cat:'other',unit:'pack',defaultPrice:null,supplier:'Booker'},
-  {id:27,name:'Micro Containers wLids 500ml',hint:'Code 307038 · 1 x 250s',cat:'other',unit:'pack',defaultPrice:null,supplier:'Booker'},
-  {id:28,name:'Micro Containers wLids 650ml',hint:'Code 307039 · 1 x 250s',cat:'other',unit:'pack',defaultPrice:null,supplier:'Booker'},
-  {id:29,name:'MG Kitchen Extra Life Gloves',hint:'Code 831321 · 6 Med',cat:'other',unit:'pack',defaultPrice:null,supplier:'Booker'},
-  {id:30,name:'CTS Vinyl PF Glove Blue Lrg',hint:'Code 306959 · 1 x 100s',cat:'other',unit:'pack',defaultPrice:null,supplier:'Booker'},
-  {id:31,name:'Blue Nitrile PF Gloves Large',hint:'Code 256114 · 1 x 100pk',cat:'other',unit:'pack',defaultPrice:null,supplier:'Booker'},
-  {id:32,name:'Blue Nitrile PF Gloves Med',hint:'Code 256436 · 1 x 100pk',cat:'other',unit:'pack',defaultPrice:null,supplier:'Booker'}
+  {id:1,name:'RM Curtis Chopped Mixed Nuts',hint:'Code 193015 · 1kg',cat:'other',unit:'1kg pack',defaultPrice:8.99,supplier:'Booker'},
+  {id:2,name:'CE Chicken Breast Fillet',hint:'Code 147179 · 5kg',cat:'meat',unit:'5kg pack',defaultPrice:55.99,supplier:'Booker'},
+  {id:3,name:'H/Land Spring Water Still',hint:'Code 301648 · 12 × 1.5L',cat:'other',unit:'case',defaultPrice:6.75,supplier:'Booker'},
+  {id:4,name:'Coke Zero',hint:'Code 063724 · 24 × 330ml',cat:'other',unit:'case',defaultPrice:9.00,supplier:'Booker'},
+  {id:5,name:'CL Cod Fillet Skinless/Boneless',hint:'Code 256183 · 1.816kg',cat:'fish',unit:'pack',defaultPrice:45.99,supplier:'Booker'},
+  {id:6,name:'CE Mid & Prime Chicken Wings',hint:'Code 321688 · 4.5kg',cat:'meat',unit:'4.5kg pack',defaultPrice:13.99,supplier:'Booker'},
+  {id:7,name:'Flat Iron Beef Steak',hint:'Code 134043 · avg 2kg',cat:'meat',unit:'pack',defaultPrice:35.70,supplier:'Booker'},
+  {id:8,name:'Chefs Choice Vegetable Oil',hint:'Code 312427 · 20L',cat:'other',unit:'20L tin',defaultPrice:26.99,supplier:'Booker'},
+  {id:9,name:'Harpic Prof Power Plus Original',hint:'Code 250742 · 1L',cat:'other',unit:'bottle',defaultPrice:2.29,supplier:'Booker'},
+  {id:10,name:'Flash Professional Glass Cleaner',hint:'Code 306094 · 750ml',cat:'other',unit:'bottle',defaultPrice:3.99,supplier:'Booker'},
+  {id:11,name:'Professional Finish All in 1 Lemon',hint:'Code 948497 · 5L',cat:'other',unit:'5L',defaultPrice:8.99,supplier:'Booker'},
+  {id:12,name:'Large Eggs',hint:'Code 168775 · 180',cat:'other',unit:'case 180',defaultPrice:33.99,supplier:'Booker'},
+  {id:13,name:'CP Mini Jumbo White T/Rolls',hint:'Code 247794 · 6pk',cat:'other',unit:'pack',defaultPrice:12.99,supplier:'Booker'},
+  {id:14,name:'CP ZFold White Paper Towels',hint:'Code 293395 · 15 × 198s',cat:'other',unit:'case',defaultPrice:29.99,supplier:'Booker'},
 ];
 
 const catMeta = {
@@ -490,10 +472,10 @@ const catMeta = {
 };
 
 const state = {};
-const stockTargetsFromLatestPDF = {1:3,2:6,3:1,4:1,5:1,6:1,7:1,8:10,9:0,10:2,11:0,12:0,13:1,14:2,15:0,16:2,17:2,18:2,19:0,20:0,21:0,22:2,23:1,24:1,25:2,26:2,27:1,28:1,29:1,30:2,31:2,32:2};
+const stockTargetsFromLatestPDF = {1:1,2:7,3:2,4:2,5:1,6:2,7:2,8:2,9:1,10:1,11:1,12:1,13:1,14:1};
 const defaultTargets = Object.fromEntries(items.map(i => [i.id, stockTargetsFromLatestPDF[i.id] ?? 0]));
 // v11 uses the latest PDF Stock column as the baseline target stock.
-const savedTargets = JSON.parse(localStorage.getItem('booker-target-stock-v1') || '{}');
+const savedTargets = JSON.parse(localStorage.getItem('booker-target-stock-v13') || '{}');
 items.forEach(i => {
   const target = Number(savedTargets[i.id] ?? defaultTargets[i.id] ?? 0);
   state[i.id] = { current:0, target, qty:target, price: i.defaultPrice, note:'' };
@@ -572,9 +554,9 @@ function setStock(id, field, val) {
   n = isNaN(n) ? 0 : Math.max(0, n);
   state[id][field] = n;
   if (field === 'target') {
-    const saved = JSON.parse(localStorage.getItem('booker-target-stock-v1') || '{}');
+    const saved = JSON.parse(localStorage.getItem('booker-target-stock-v13') || '{}');
     saved[id] = n;
-    localStorage.setItem('booker-target-stock-v1', JSON.stringify(saved));
+    localStorage.setItem('booker-target-stock-v13', JSON.stringify(saved));
   }
   state[id].qty = Math.max(0, (state[id].target || 0) - (state[id].current || 0));
   const order = document.querySelector(`#card-${id} .order-input`);
@@ -688,8 +670,8 @@ async function buildPDF() {
   const {jsPDF} = window.jspdf;
 
   try {
-    // Landscape A4 gives enough width for all 8 columns.
-    const pdf = new jsPDF({orientation:'landscape', unit:'px', format:'a4'});
+    // Portrait A4 output.
+    const pdf = new jsPDF({orientation:'portrait', unit:'px', format:'a4'});
     const pdfW = pdf.internal.pageSize.getWidth();
     const pdfH = pdf.internal.pageSize.getHeight();
     let firstPage = true;
@@ -727,7 +709,7 @@ async function buildPDF() {
         pdfArea.style.display = 'block';
 
         // Keep the rendered page below this height so no row is ever sliced.
-        // 500 CSS px maps safely inside landscape A4 after scaling.
+        // Render width is scaled to fit portrait A4.
         const maxRenderHeight = 500;
         let added = 0;
         while (cursor + added < supplierItems.length) {
@@ -753,7 +735,7 @@ async function buildPDF() {
         const ratio = Math.min(pdfW/canvas.width, pdfH/canvas.height);
         const drawW = canvas.width*ratio, drawH = canvas.height*ratio;
         const x = (pdfW-drawW)/2;
-        if(!firstPage) pdf.addPage('a4','landscape');
+        if(!firstPage) pdf.addPage('a4','portrait');
         firstPage=false;
         pdf.addImage(canvas.toDataURL('image/png'),'PNG',x,0,drawW,drawH);
 
@@ -773,7 +755,7 @@ async function buildPDF() {
           pdfArea.style.display='none';
           const ratio=Math.min(pdfW/canvas.width,pdfH/canvas.height);
           const drawW=canvas.width*ratio, drawH=canvas.height*ratio;
-          pdf.addPage('a4','landscape');
+          pdf.addPage('a4','portrait');
           pdf.addImage(canvas.toDataURL('image/png'),'PNG',(pdfW-drawW)/2,0,drawW,drawH);
         }
       }
@@ -788,13 +770,13 @@ async function buildPDF() {
 async function savePDF() {
   const pdf = await buildPDF();
   if (!pdf) return;
-  pdf.save(`order-by-supplier-${dateEl.value||'today'}.pdf`);
+  pdf.save(`booker-order-${dateEl.value||'today'}.pdf`);
 }
 
 async function sharePDF() {
   const pdf = await buildPDF();
   if (!pdf) return;
-  const filename = `order-by-supplier-${dateEl.value||'today'}.pdf`;
+  const filename = `booker-order-${dateEl.value||'today'}.pdf`;
   // Build a real PDF File object. iPhone/iPad Safari can pass this file to LINE
   // through the native Share Sheet. We intentionally do not share the page URL.
   const bytes = pdf.output('arraybuffer');
@@ -820,7 +802,7 @@ async function sharePDF() {
 }
 
 
-let nextCustomId = 33;
+let nextCustomId = 76;
 
 function toggleAddForm() {
   const form = document.getElementById('add-item-form');
@@ -858,7 +840,6 @@ function addNewItem() {
     unit: unitEl.value.trim() || 'ชิ้น',
     defaultPrice: isNaN(price) ? null : price,
     custom: true,
-    supplier: 'Booker',
   });
 
   state[id] = { current:0, target:0, qty:0, price: isNaN(price) ? null : price, note: '' };
